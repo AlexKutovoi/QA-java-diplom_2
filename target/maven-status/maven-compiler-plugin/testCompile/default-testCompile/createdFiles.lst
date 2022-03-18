@@ -1,0 +1,6 @@
+OrderAuthorizedUserApiTest.class
+OrderApiTest.class
+LoginErrorApiTest.class
+OrderNotIngredientsTest.class
+ProfileApiTest.class
+LoginApiTest.class
