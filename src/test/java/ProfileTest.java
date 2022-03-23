@@ -6,27 +6,27 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
-public class ProfileApiTest {
+public class ProfileTest {
 
-    UsersApiService usersApiService = new UsersApiService();
+    UsersService usersService = new UsersService();
 
-    private UsersApi usersApi;
+    private Users users;
     private final int expectedStatusCode;
 
-    public ProfileApiTest(UsersApi usersApi, int expectedStatusCode) {
-        this.usersApi = usersApi;
+    public ProfileTest(Users users, int expectedStatusCode) {
+        this.users = users;
         this.expectedStatusCode = expectedStatusCode;
     }
 
     @Parameterized.Parameters
     public static Object[][] getTestData() {
         return new Object[][]{
-                {UsersApi.getNameOnly(), 403},
-                {UsersApi.getEmailOnly(), 403},
-                {UsersApi.getNameAndEmail(), 403},
-                {UsersApi.getPasswordOnly(), 403},
-                {UsersApi.getEmailAndPassword(), 403},
-                {UsersApi.getNameAndPassword(), 403},
+                {Users.getNameOnly(), 403},
+                {Users.getEmailOnly(), 403},
+                {Users.getNameAndEmail(), 403},
+                {Users.getPasswordOnly(), 403},
+                {Users.getEmailAndPassword(), 403},
+                {Users.getNameAndPassword(), 403},
         };
     }
 
@@ -34,7 +34,7 @@ public class ProfileApiTest {
     @DisplayName("create user if one of the required fields is not filled in")
     public void invalidRequestTest() {
 
-        ValidatableResponse response = usersApiService.createUser(usersApi);
+        ValidatableResponse response = usersService.createUser(users);
         int statusCode = response.extract().statusCode();
         Assert.assertEquals("Status code is wrong", expectedStatusCode, statusCode);
     }

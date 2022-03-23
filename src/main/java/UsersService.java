@@ -3,12 +3,12 @@ import io.restassured.response.ValidatableResponse;
 
 import static io.restassured.RestAssured.given;
 
-public class UsersApiService extends OrderServiceApi{
+public class UsersService extends OrderService{
 
-    private static final String BASE_URL = "https://stellarburgers.nomoreparties.site/";
+    public static final String BASE_URL = "https://stellarburgers.nomoreparties.site/";
 
     @Step("create user")
-    public ValidatableResponse createUser(UsersApi user) {
+    public ValidatableResponse createUser(Users user) {
         return given()
                 .spec(getBaseSpec())
                 .body(user)
@@ -18,7 +18,7 @@ public class UsersApiService extends OrderServiceApi{
     }
 
     @Step("authorized user")
-    public ValidatableResponse authorizedUser(UsersApiCredentials credentials) {
+    public ValidatableResponse authorizedUser(UsersCredentials credentials) {
         return given()
                 .spec(getBaseSpec())
                 .body(credentials)
@@ -28,7 +28,7 @@ public class UsersApiService extends OrderServiceApi{
     }
 
     @Step("edit authorized user")
-    public ValidatableResponse editAuthorizedUser(UsersApiCredentials credentials, String token) {
+    public ValidatableResponse editAuthorizedUser(UsersCredentials credentials, String token) {
         return given()
                 .spec(getBaseSpec())
                 .auth()
@@ -40,7 +40,7 @@ public class UsersApiService extends OrderServiceApi{
     }
 
     @Step("edit not authorized user")
-    public ValidatableResponse editNotAuthorizedUser(UsersApiCredentials credentials) {
+    public ValidatableResponse editNotAuthorizedUser(UsersCredentials credentials) {
         return given()
                 .spec(getBaseSpec())
                 .body(credentials)

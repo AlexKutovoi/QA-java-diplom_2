@@ -1,14 +1,15 @@
 import java.util.ArrayList;
 
-public class IngredientApi {
+public class Ingredient {
 
     public ArrayList<String> ingredients;
 
-    public IngredientApi() {
+    public Ingredient() {
 
     }
 
-    public IngredientApi(ArrayList<String> ingredients) {
+    public Ingredient(ArrayList<String> ingredients) {
+
         this.ingredients = ingredients;
     }
 }

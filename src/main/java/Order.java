@@ -2,7 +2,7 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 
-public class OrderApi {
+public class Order {
 
     public RequestSpecification getBaseSpec() {
         return new RequestSpecBuilder()
